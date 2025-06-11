@@ -3,13 +3,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import LeafletMap from "../components/LeafletMap";
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const menuItems = ["회사소개", "회사연혁", "오시는길", "문의"];
+  const menuItems = [
+    { name: "회사소개", path: "/history" },
+    { name: "회사연혁", path: "/history" },
+    { name: "오시는길", path: "/directions" },
+    { name: "문의", path: "/contact" }
+  ];
 
   const handleScrollDown = () => {
     window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
@@ -19,41 +27,7 @@ export default function HomePage() {
     <div className="font-sans h-screen snap-y snap-mandatory overflow-y-scroll">
       <div className="flex flex-col h-screen snap-start">
         {/* Header */}
-        <header className="flex justify-between items-center h-16 p-12 border-b shadow-md px-12">
-        <div className="flex items-center cursor-pointer">
-          {/* 로고 이미지 */}
-          <img
-            src="/logo.png"
-            alt="주일에코텍 로고"
-            className="h-10 w-auto mr-3"
-          />
-          {/* 기존 회사명 링크 */}
-          <a href="/" className="text-gray-800 text-4xl font-bold">
-            주일에코텍
-          </a>
-        </div>
-          <nav className="hidden md:flex space-x-20">
-            {menuItems.map((item) => (
-              <a href="#" className="hover:text-blue-600 text-lg" key={item}>
-                {item}
-              </a>
-            ))}
-          </nav>
-          <button onClick={toggleMenu}>
-            {/* {menuOpen ? <X /> : <Menu />} */}
-          </button>
-        </header>
-
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="md:hidden p-4 border-b">
-            {menuItems.map((item) => (
-              <a href="#" className="block py-2 border-b" key={item}>
-                {item}
-              </a>
-            ))}
-          </div>
-        )}
+        <Header />
 
         {/* Hero Section */}
         {/* <section
@@ -77,36 +51,36 @@ export default function HomePage() {
             </button>
           </div> */}
           <div className="px-4 md:px-60">
-    {/* h2: 왼쪽 → 오른쪽 */}
-    <motion.h2
-      className="text-3xl md:text-6xl font-bold mt-6"
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      주일에코텍
-    </motion.h2>
+            {/* h2: 왼쪽 → 오른쪽 */}
+            <motion.h2
+              className="text-3xl md:text-6xl font-bold mt-6"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              주일에코텍
+            </motion.h2>
 
-    {/* p: 왼쪽 → 오른쪽, h2 다음에 살짝 딜레이 */}
-    <motion.p
-      className="mt-10 text-lg md:text-xl font-medium"
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
-    >
-      사업장 폐기물을 친환경 에너지로 전환하는 자원순환 전문기업<br />
-    </motion.p>
+            {/* p: 왼쪽 → 오른쪽, h2 다음에 살짝 딜레이 */}
+            <motion.p
+              className="mt-10 text-lg md:text-xl font-medium"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              사업장 폐기물을 친환경 에너지로 전환하는 자원순환 전문기업<br />
+            </motion.p>
 
-    {/* 버튼: 아래 → 위로 */}
-    <motion.button
-      className="mt-10 py-6 px-10 border border-white text-white hover:bg-white hover:text-black tracking-wide"
-      initial={{ y: 30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 1 }}
-    >
-      COMPANY OVERVIEW
-    </motion.button>
-  </div>
+            {/* 버튼: 아래 → 위로 */}
+            <motion.button
+              className="mt-10 py-6 px-10 border border-white text-white hover:bg-white hover:text-black tracking-wide"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              COMPANY OVERVIEW
+            </motion.button>
+          </div>
 
           {/* Scroll icon */}
           <div className="absolute bottom-6 flex justify-center w-full">
@@ -219,32 +193,13 @@ export default function HomePage() {
               <strong>FAX.</strong> 055-585-1271
             </p>
             <p>
-              <strong>E-MAIL.</strong> juli2017@naver.com
+              <strong>E-MAIL.</strong> juil2017@naver.com
             </p>
           </div>
         </div>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-400 text-sm px-6 py-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-4">
-              <p>
-                상호명 : (주)주일에코텍&nbsp;&nbsp;&nbsp;
-                대표자 : 박준규&nbsp;&nbsp;&nbsp;
-                사업자등록번호 : 784-87-00507&nbsp;&nbsp;&nbsp;
-                전화 : 055-585-1272&nbsp;&nbsp;&nbsp;
-                팩스 : 055-585-1271
-              </p>
-              <p className="mt-1">
-                주소 : 경남 함안군 대산면 대부로 398&nbsp;&nbsp;&nbsp;
-                이메일 : juli2017@naver.com
-              </p>
-            </div>
-            <div className="text-sm text-gray-500">
-              Copyright ⓒ (주)주일에코텍. All rights reserved.
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </section>
 
       
