@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/juil-ecotec/static/css/main.b9aa7980.css",
+    "main.js": "/juil-ecotec/static/js/main.f233f236.js",
+    "static/js/453.8eb963c5.chunk.js": "/juil-ecotec/static/js/453.8eb963c5.chunk.js",
+    "index.html": "/juil-ecotec/index.html",
+    "main.b9aa7980.css.map": "/juil-ecotec/static/css/main.b9aa7980.css.map",
+    "main.f233f236.js.map": "/juil-ecotec/static/js/main.f233f236.js.map",
+    "453.8eb963c5.chunk.js.map": "/juil-ecotec/static/js/453.8eb963c5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9aa7980.css",
+    "static/js/main.f233f236.js"
+  ]
+}
